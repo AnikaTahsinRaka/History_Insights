@@ -27,6 +27,7 @@ from django.conf.urls.static import static
 from .views import password_change
 
 urlpatterns = [
+<<<<<<< HEAD
     path('', views.home, name='home'),
      path('review/', views.review, name='review'),
     path('review', views.handleReview, name='handleReview'),
@@ -34,6 +35,13 @@ urlpatterns = [
     path('sign_in/', views.sign_in, name='sign_in'),
     path('sign_up/', views.sign_up, name='sign_up'),
     path('signin', views.handleSignin, name='handleSignin'),
+=======
+
+    
+    
+   
+    
+>>>>>>> eafb169c58c80899aead9d37808153ef969eb0da
     path('admin/', admin.site.urls),
     path('about/', views.about, name='about'),
     path('contact/', views.contact, name='contact'),
@@ -48,8 +56,17 @@ urlpatterns = [
     # path('password_change_done', views.PasswordChangeDoneView.as_view(template_name="registration/password_change_done.html"), name='password_change_done'),
     path('password_change_done', PasswordChangeDoneView.as_view(template_name='registration/password_change_done.html'),
          name='password_change_done'),
-    path('heritageNew/', views.heritageNew, name='heritageNew'),
     path('tasks/', views.handleTasks, name='handleTasks'),
+    path('heritage/', views.heritage, name='heritage'),
+    path('list_of_sights/', views.list_of_sights, name='list_of_sights'),
+    path('ahsan_manjil/', views.ahsan_manjil, name='ahsan_manjil'),
+    path('lalbagh_fort/', views.lalbagh_fort, name='lalbagh_fort'),
+    path('star_mosque/', views.star_mosque, name='star_mosque'),
+    path('ramakrishna_mission_temple/', views.ramakrishna_mission_temple, name='ramakrishna_mission_temple'),
+    path('searchbar/', views.searchbarr, name='searchbar'),
+    path('places/', views.places, name='places'),
+    path('information', views.handleInformation, name='handleInformation'),
+    path('heritageNew/', views.heritageNew, name='heritageNew'),
    
 ]
 
