@@ -38,6 +38,68 @@ def make_plan(request):
     # task = Task.objects.filter(user=request.user.id)
     # print(task)
     return render(request, 'make_plan.html')
+def home(request):
+    return render(request, 'home.html')
+def sign_in(request):
+    return render(request, 'sign_in.html')
+
+
+def sign_up(request):
+    return render(request, 'sign_up.html')
+def handleSignup(request):
+    if request.method == 'POST':
+        first_name = request.POST['first_name']
+        name = request.POST['name']
+        email = request.POST['email']
+        password = request.POST['password']
+        confirmPassword = request.POST['confirmPassword']
+
+        if len(name) > 50:
+            messages.error(request, "Name must be under 50 characters.")
+            return redirect('/sign_up/')
+        if password != confirmPassword:
+            messages.error(request, "Password don't match try again.")
+            return redirect('/sign_up/')
+
+        my_user = User.objects.create_user(name, email, password)
+        my_user.save()
+        messages.success(request, "Your account has been successfully created")
+        return redirect('/')
+    else:
+        return HttpResponse('404 Not Found')
+def handleSignin(request):
+    if request.method == 'POST':
+        u = request.POST['userName']
+        p = request.POST['password']
+
+        user = authenticate(request, username=u, password=p)
+
+        if user is not None:
+            login(request, user)
+            messages.success(request, "Successfully Logged In.")
+            return redirect('/')
+        else:
+            messages.error(request, "Something not matching.")
+            return redirect('/sign_in/')
+def review(request):
+    # review = Review.objects.all()
+    # review = Review.objects.filter(user=request.review.id)
+    # print(request.Review.id)
+    return render(request, 'review.html')
+
+
+
+
+def handleReview(request):
+    if request.method == 'POST':
+        rating = request.POST['rating']
+        # p = HeritageDetails.objects.filter(PlaceName=request.)
+
+        # rating = request.GET.get('rating')
+        msg = request.POST['review']
+        myuser = models.Review(Rating=rating, Msg=msg)
+        myuser.save()
+        return redirect('/review/')
 
 
 0

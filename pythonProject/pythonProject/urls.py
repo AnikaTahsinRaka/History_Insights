@@ -27,6 +27,13 @@ from django.conf.urls.static import static
 from .views import password_change
 
 urlpatterns = [
+    path('', views.home, name='home'),
+     path('review/', views.review, name='review'),
+    path('review', views.handleReview, name='handleReview'),
+    path('signup', views.handleSignup, name='handleSignup'),
+    path('sign_in/', views.sign_in, name='sign_in'),
+    path('sign_up/', views.sign_up, name='sign_up'),
+    path('signin', views.handleSignin, name='handleSignin'),
     path('admin/', admin.site.urls),
     path('about/', views.about, name='about'),
     path('contact/', views.contact, name='contact'),

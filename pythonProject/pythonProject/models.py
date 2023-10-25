@@ -1,8 +1,26 @@
 from django.db import models
 from django.contrib.auth.models import User
 # from PIL import Image
+class Review(models.Model):
+    Task_id = models.AutoField
+    Rating = models.CharField(max_length=200)
+    Msg = models.CharField(max_length=200)
+    Created = models.DateTimeField(auto_now_add=True)
+    place = models.ForeignKey(
+        HeritageDetails, on_delete=models.CASCADE, null=True, blank=True)
+class SignUp(models.Model):
+    User_id = models.AutoField
+    FullName = models.CharField(max_length=100)
+    UserName = models.CharField(max_length=100)
+    Email = models.CharField(max_length=100)
+    password = models.CharField(max_length=50)
 
 
+class Signin(models.Model):
+    User_id = models.AutoField
+    UserName = models.CharField(max_length=100)
+    Email = models.CharField(max_length=100)
+    password = models.CharField(max_length=50)
 class Contact(models.Model):
     User_id = models.AutoField
     UserName = models.CharField(max_length=50)
